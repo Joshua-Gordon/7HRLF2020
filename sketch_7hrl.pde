@@ -2,6 +2,8 @@ Player bbrian = new Player();
 Room room = new Room();
 Room[][] grid = new Room[5][5];
 
+PImage computer = loadImage("computer.png");
+
 void keyPressed() {
    if(key == 'w') {
      bbrian.direction = 0;
