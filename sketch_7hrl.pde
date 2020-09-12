@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 Player bbrian = new Player();
 Room room;
 Room[][] grid = new Room[5][5];
@@ -5,7 +7,8 @@ Stairs stairs = new Stairs();
 
 int score = 0;
 
-PImage computer, monke; 
+PImage computer, seola, monke; 
+SoundFile monkeysound;
 
 boolean dead = false;
 
@@ -50,6 +53,8 @@ void setup() {
   placeStairs(stairs);
   computer = loadImage("computer.png");
   monke = loadImage("monke.png");
+  seola = loadImage("enemy2.png");
+  monkeysound = new SoundFile(this,"monkey1.mp3");
 }
 
 void draw() {
@@ -60,6 +65,7 @@ void draw() {
    if(!dead)
      bbrian.update();
    if(stairs.doStairs(bbrian)){
+     monkeysound.play();
      bbrian.gx = 0;
      bbrian.gy = 0;
      grid = new Room[5][5];

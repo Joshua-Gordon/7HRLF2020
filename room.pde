@@ -1,4 +1,7 @@
  void nextRoom(int gx, int gy,int d) {
+   if(gx > 4 || gy > 4 || gx < 0 || gy < 0) {
+      return; 
+   }
   if(grid[gx][gy] != null) {
      room = grid[gx][gy];
      return;
@@ -68,7 +71,13 @@ class Room {
              rx = int(random(512));
              ry = int(random(512));
            }
-           Enemy e = new Enemy(rx,ry);
+           Enemy e;
+           if(random(1) > 0.95) {
+             e = new Seola(rx,ry);
+             println("KPOP!!!");
+           } else {
+            e = new Enemy(rx,ry);
+           }
            enemies[i] = e;
         }
      }
