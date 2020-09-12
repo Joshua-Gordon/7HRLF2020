@@ -38,12 +38,40 @@
 
 class Room {
   boolean[] exits = new boolean[4];
+  Enemy[] enemies = null;
   
   Room() {
      exits[0] = random(1)>0.3;
      exits[1] = random(1)>0.3;
      exits[2] = random(1)>0.3;
      exits[3] = random(1)>0.3;
+     if(random(1) > 0.7){
+       enemies = new Enemy[2];
+     } else if(random(1) > 0.9) {
+       enemies = new Enemy[3]; 
+     } else {
+       println("no enemies"); 
+     }
+     if(enemies != null) {
+        for(int i = 0; i < enemies.length; ++i) {
+           int rx = int(random(512));
+           int ry = int(random(512));
+           while(sqrt((bbrian.x - rx)*(bbrian.x - rx) + (bbrian.y - ry)*(bbrian.y - ry)) < 200) {  
+             rx = int(random(512));
+             ry = int(random(512));
+           }
+           Enemy e = new Enemy(rx,ry);
+           enemies[i] = e;
+        }
+     }
+  }
+  
+  void update() {
+    if(enemies != null) {
+       for(int i = 0; i < enemies.length; ++i) {
+          enemies[i].update(); 
+       }
+    }
   }
   
   void render() {
@@ -62,6 +90,11 @@ class Room {
     }
     if(!exits[3]) {
       rect(0,0,170,512);
+    }
+    if(enemies != null) {
+       for(int i = 0; i < enemies.length; ++i) {
+          enemies[i].render(); 
+       }
     }
   }
   
