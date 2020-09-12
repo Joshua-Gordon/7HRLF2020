@@ -117,11 +117,17 @@ void draw() {
   if (stairs.gx == bbrian.gx && stairs.gy == bbrian.gy) {
     stairs.render();
   }
-  color(0, 0, 0);
-  text("Returned to monkey " + score + " time" + (score==1?"":"s"), 256, 256);
-  color(255, 255, 255);
 
   if (dead) {
-    println("YOU ARE DEAD!");
+    textSize(40);
+    fill(196, 0, 0);
+    textAlign(CENTER);
+    background(0, 0, 0, 0.50);
+    text("u died, monke sad", width/2, height/2);
+    text("only found " + score + " monke", width/2, height/2 + 60);
+  } else {
+    textSize(16);
+    textAlign(LEFT);
+    text("Returned to monkey " + score + " time" + (score==1?"":"s"), 256, 256);
   }
 }
