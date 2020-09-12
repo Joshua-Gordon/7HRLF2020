@@ -1,6 +1,7 @@
 class Player {
   int x,y;
   int dx,dy;
+  int gx,gy;
   boolean moving;
   int direction;
   
@@ -11,6 +12,8 @@ class Player {
     y = 256;
     dx = 0;
     dy = 0;
+    gx = 0;
+    gy = 0;
     size = 30;
     direction = 0;
   }
