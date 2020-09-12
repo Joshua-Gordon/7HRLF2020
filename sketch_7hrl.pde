@@ -1,9 +1,9 @@
 Player bbrian = new Player();
-Room room = new Room();
+Room room;
 Room[][] grid = new Room[5][5];
 Stairs stairs = new Stairs();
 
-PImage computer = loadImage("computer.png");
+PImage computer; 
 
 void keyPressed() {
    if(key == 'w') {
@@ -36,7 +36,14 @@ void keyReleased() {
 void setup() {
   size(512,512); 
   noStroke();
-  grid[0][0] = room;
+  for(int x = 0; x < 5; ++x) {
+    for(int y = 0; y < 5; ++y) {
+      grid[x][y] = null;
+    }
+  }
+  nextRoom(0,0,3);
+  room = grid[0][0];
+  computer = loadImage("computer.png");
 }
 
 void draw() {
