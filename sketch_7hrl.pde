@@ -89,7 +89,8 @@ void setup() {
 }
 
 void draw() {
-  clear();
+  if (!dead) 
+    clear();
   if(start > 0) {
      tint(255,255*start/5000);
      image(startup,0,0);
@@ -146,10 +147,11 @@ void draw() {
   }
   
   if (dead) {
-    textSize(40);
+    fill(20, 20, 20, 196);
+    square(0, 0, 512);
     fill(196, 0, 0);
+    textSize(40);
     textAlign(CENTER);
-    background(0, 0, 0, 0.50);
     text("u died, monke sad", width/2, height/2);
     text("only found " + score + " monke", width/2, height/2 + 60);
   } else {
