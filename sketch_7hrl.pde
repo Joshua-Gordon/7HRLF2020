@@ -33,7 +33,12 @@ void keyReleased() {
 void setup() {
   size(512,512); 
   noStroke();
-  grid[0][0] = room;
+  for(int i = 0; i < 5; ++i) {
+     for(int j = 0; j < 5; ++j) {
+        grid[i][j] = null; 
+     }
+  }
+  nextRoom(0,0,3);
 }
 
 void draw() {
