@@ -43,6 +43,7 @@ void setup() {
   }
   nextRoom(0,0,3);
   room = grid[0][0];
+  placeStairs(stairs);
   computer = loadImage("computer.png");
   monke = loadImage("monke.png");
 }

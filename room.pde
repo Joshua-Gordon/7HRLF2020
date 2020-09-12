@@ -16,21 +16,29 @@
     r.exits[0] = false;
   } else if (grid[gx][gy-1] != null && grid[gx][gy-1].exits[2]) {
      r.exits[0] = true; 
+  }else if (grid[gx][gy-1] != null && !grid[gx][gy-1].exits[2]) {
+     r.exits[0] = false; 
   }
   if(gy == 4) {
     r.exits[2] = false;
   } else if(grid[gx][gy+1] != null && grid[gx][gy+1].exits[0]) {
     r.exits[2] = true; 
+  } else if(grid[gx][gy+1] != null && !grid[gx][gy+1].exits[0]) {
+    r.exits[2] = false; 
   }
   if(gx == 0) {
     r.exits[3] = false;
   } else if (grid[gx-1][gy] != null && grid[gx-1][gy].exits[1]) {
     r.exits[3] = true; 
+  } else if (grid[gx-1][gy] != null && !grid[gx-1][gy].exits[1]) {
+    r.exits[3] = false; 
   }
   if(gx == 4) {
     r.exits[1] = false;
   } else if (grid[gx+1][gy] != null && grid[gx+1][gy].exits[3]) {
     r.exits[1] = true; 
+  } else if (grid[gx+1][gy] != null && !grid[gx+1][gy].exits[3]) {
+    r.exits[1] = false; 
   }
   grid[gx][gy] = r;
   room = r;
