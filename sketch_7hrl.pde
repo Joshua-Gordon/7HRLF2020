@@ -7,10 +7,11 @@ Stairs stairs = new Stairs();
 
 int score = 0;
 
-PImage computer, seola, monke, rock; 
+PImage computer, seola, monke, rock, startup; 
 SoundFile monkeysound;
 
 boolean dead = false;
+int start = 5000;
 
 void keyPressed() {
   if (key == 'w') {
@@ -25,6 +26,20 @@ void keyPressed() {
   } else if (key == 'a') {
     bbrian.direction = 3;
     bbrian.dx = constrain(bbrian.dx-5, -5, 5);
+  } else if (key == 'm') {
+    for (int x = 0; x < 5; ++x) {
+      for (int y = 0; y < 5; ++y) {
+        grid[x][y] = null;
+      }
+    }
+    nextRoom(0, 0, 3);
+    room = grid[0][0];
+    placeStairs(stairs);
+    projectiles = new ArrayList();
+    bbrian.gx = 0;
+    bbrian.gy = 0;
+    bbrian.x = 256;
+    bbrian.y = 256;
   }
 }
 
@@ -51,6 +66,12 @@ ArrayList<Projectile> projectiles;
 void setup() {
   size(512, 512); 
   noStroke();
+  
+  startup = loadImage("angrymonke.png");
+  
+  
+  
+  
   for (int x = 0; x < 5; ++x) {
     for (int y = 0; y < 5; ++y) {
       grid[x][y] = null;
@@ -72,6 +93,12 @@ void setup() {
 
 void draw() {
   clear();
+  if(start > 0) {
+    tint(255,255*start/5000);
+     image(startup,0,0);
+     start-=100;
+     return;
+  }
   room.render();
   room.update();
   bbrian.render();
@@ -117,7 +144,7 @@ void draw() {
   if (stairs.gx == bbrian.gx && stairs.gy == bbrian.gy) {
     stairs.render();
   }
-
+  
   if (dead) {
     textSize(40);
     fill(196, 0, 0);
