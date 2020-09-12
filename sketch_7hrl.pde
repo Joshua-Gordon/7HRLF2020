@@ -55,6 +55,12 @@ void draw() {
    if(stairs.doStairs(bbrian)){
      bbrian = new Player();
      grid = new Room[5][5];
+       for(int x = 0; x < 5; ++x) {
+        for(int y = 0; y < 5; ++y) {
+          grid[x][y] = null;
+        }
+       }
+  nextRoom(0,0,3);
      room = grid[0][0];
    }
 }
