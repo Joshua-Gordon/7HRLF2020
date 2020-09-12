@@ -37,6 +37,7 @@ class Player {
   }
   
   Projectile shoot() {
+    if (dead) return null;
     float mag = sqrt((this.x - mouseX) * (this.x - mouseX) + (this.y - mouseY) * (this.y - mouseY));
     float vx = 10 * (mouseX - this.x) / mag + this.dx;
     float vy = 10 * (mouseY - this.y) / mag + this.dy;

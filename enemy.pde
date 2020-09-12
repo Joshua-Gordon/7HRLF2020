@@ -5,7 +5,7 @@ class Enemy {
      this.x = x;
      this.y = y;
   }
-  
+
   void render() {
      image(computer,x,y); 
   }
@@ -23,6 +23,18 @@ class Enemy {
     println("moving!");
   }
   
+  boolean collide(Projectile p) {
+    int dx = p.x - x;
+    int dy = p.y - y;
+    float mag = sqrt(float(dx*dx + dy*dy));
+    if(mag < 25) {
+      this.x += 2 * p.dx;
+      this.y += 2 * p.dy;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 class Seola extends Enemy {
