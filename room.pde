@@ -1,11 +1,37 @@
+void nextRoom(int gx, int gy,int d) {
+  if(grid[gx][gy] != null) {
+     room = grid[gx][gy];
+     return;
+  }
+  Room r = new Room();
+  if(d == 0)
+    r.exits[2] = true;
+  if(d == 1)
+    r.exits[3] = true;
+  if(d == 2)
+    r.exits[0] = true;
+  if(d == 3)
+    r.exits[1] = true;
+  if(gy == 0)
+    r.exits[0] = false;
+  if(gy == 4)
+    r.exits[2] = false;
+  if(gx == 0)
+    r.exits[3] = false;
+  if(gx == 4)
+    r.exits[1] = false;
+  grid[gx][gy] = r;
+  room = r;
+}
+
 class Room {
   boolean[] exits = new boolean[4];
   
   Room() {
-     exits[0] = random(1)>0.5;
-     exits[1] = random(1)>0.5;
-     exits[2] = random(1)>0.5;
-     exits[3] = random(1)>0.5;
+     exits[0] = random(1)>0.3;
+     exits[1] = random(1)>0.3;
+     exits[2] = random(1)>0.3;
+     exits[3] = random(1)>0.3;
   }
   
   void render() {
