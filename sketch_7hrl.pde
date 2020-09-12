@@ -3,7 +3,7 @@ Room room;
 Room[][] grid = new Room[5][5];
 Stairs stairs = new Stairs();
 
-PImage computer; 
+PImage computer, monke; 
 
 void keyPressed() {
    if(key == 'w') {
@@ -44,6 +44,7 @@ void setup() {
   nextRoom(0,0,3);
   room = grid[0][0];
   computer = loadImage("computer.png");
+  monke = loadImage("monke.png");
 }
 
 void draw() {
@@ -53,8 +54,18 @@ void draw() {
    bbrian.render();
    bbrian.update();
    if(stairs.doStairs(bbrian)){
-     bbrian = new Player();
+     bbrian.gx = 0;
+     bbrian.gy = 0;
      grid = new Room[5][5];
+     for(int x = 0; x < 5; ++x) {
+       for(int y = 0; y < 5; ++y) {
+        grid[x][y] = null;
+       }
+      }
+     nextRoom(0,0,3);
      room = grid[0][0];
+   }
+   if(stairs.gx == bbrian.gx && stairs.gy == bbrian.gy) {
+      stairs.render(); 
    }
 }

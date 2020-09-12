@@ -18,4 +18,9 @@ class Stairs {
     println(hitStairs);
     return hitStairs;
   }
+  
+  void render() {
+     image(monke,x,y); 
+  }
+  
 }
