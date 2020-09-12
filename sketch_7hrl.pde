@@ -1,6 +1,7 @@
 Player bbrian = new Player();
 Room room = new Room();
 Room[][] grid = new Room[5][5];
+Stairs stairs = new Stairs();
 
 PImage computer = loadImage("computer.png");
 
@@ -35,12 +36,7 @@ void keyReleased() {
 void setup() {
   size(512,512); 
   noStroke();
-  for(int i = 0; i < 5; ++i) {
-     for(int j = 0; j < 5; ++j) {
-        grid[i][j] = null; 
-     }
-  }
-  nextRoom(0,0,3);
+  grid[0][0] = room;
 }
 
 void draw() {
@@ -48,4 +44,5 @@ void draw() {
    room.render();
    bbrian.render();
    bbrian.update();
+   bbrian=stairs.doStairs(bbrian);    
 }
