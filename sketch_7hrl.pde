@@ -49,6 +49,7 @@ void setup() {
 void draw() {
    clear();
    room.render();
+   room.update();
    bbrian.render();
    bbrian.update();
    bbrian=stairs.doStairs(bbrian);    

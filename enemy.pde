@@ -1,6 +1,11 @@
 class Enemy {
   int x,y;
   
+  Enemy(int x, int y) {
+     this.x = x;
+     this.y = y;
+  }
+  
   void render() {
      image(computer,x,y); 
   }
@@ -9,10 +14,11 @@ class Enemy {
     int dx = bbrian.x - x;
     int dy = bbrian.y - y;
     float mag = sqrt(float(dx*dx + dy*dy));
-    dx /= mag/5;
-    dy /= mag/5;
+    dx /= mag/2;
+    dy /= mag/2;
     x += dx;
     y += dy;
+    println("moving!");
   }
   
 }
