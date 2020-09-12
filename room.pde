@@ -1,4 +1,4 @@
-void nextRoom(int gx, int gy,int d) {
+ void nextRoom(int gx, int gy,int d) {
   if(grid[gx][gy] != null) {
      room = grid[gx][gy];
      return;
