@@ -75,6 +75,8 @@ class Room {
   }
   
   void render() {
+    stroke(255,255,255,127);
+    fill(255,255,255,127);
     square(0,0,170);
     square(512-170,0,170);
     square(0,512-170,170);

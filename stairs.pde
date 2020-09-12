@@ -4,8 +4,8 @@ class Stairs {
 	Stairs(){
 		x=256;
 		y=256;
-		gx=1;
-		gy=0;
+		gx=int(random(5));
+		gy=int(random(5));
 	}
 
 	Boolean doStairs(Player player){
