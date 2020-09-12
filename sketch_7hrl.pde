@@ -37,11 +37,13 @@ void keyReleased() {
     bbrian.dx -= 5;
   } else if (key == 'a') {
     bbrian.dx += 5;
-  } else if (key == ' ') {
-    Projectile p = bbrian.shoot();
-    if (p != null)
-      projectiles.add(p);
   }
+}
+
+void mousePressed() {
+  Projectile p = bbrian.shoot();
+  if(p != null)
+    projectiles.add(p);
 }
 
 ArrayList<Projectile> projectiles;
