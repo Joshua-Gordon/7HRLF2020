@@ -41,8 +41,8 @@ class Seola extends Enemy {
     float mag = sqrt(float(dx*dx + dy*dy));
     if(mag < 5)
       dead = true;
-    dx /= mag/10;
-    dy /= mag/10;
+    dx /= mag/4;
+    dy /= mag/4;
     x += dx;
     y += dy;
     println("moving!");
