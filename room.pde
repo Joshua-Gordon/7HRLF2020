@@ -16,21 +16,29 @@
     r.exits[0] = false;
   } else if (grid[gx][gy-1] != null && grid[gx][gy-1].exits[2]) {
      r.exits[0] = true; 
+  }else if (grid[gx][gy-1] != null && !grid[gx][gy-1].exits[2]) {
+     r.exits[0] = false; 
   }
   if(gy == 4) {
     r.exits[2] = false;
   } else if(grid[gx][gy+1] != null && grid[gx][gy+1].exits[0]) {
     r.exits[2] = true; 
+  } else if(grid[gx][gy+1] != null && !grid[gx][gy+1].exits[0]) {
+    r.exits[2] = false; 
   }
   if(gx == 0) {
     r.exits[3] = false;
   } else if (grid[gx-1][gy] != null && grid[gx-1][gy].exits[1]) {
     r.exits[3] = true; 
+  } else if (grid[gx-1][gy] != null && !grid[gx-1][gy].exits[1]) {
+    r.exits[3] = false; 
   }
   if(gx == 4) {
     r.exits[1] = false;
   } else if (grid[gx+1][gy] != null && grid[gx+1][gy].exits[3]) {
     r.exits[1] = true; 
+  } else if (grid[gx+1][gy] != null && !grid[gx+1][gy].exits[3]) {
+    r.exits[1] = false; 
   }
   grid[gx][gy] = r;
   room = r;
@@ -75,23 +83,23 @@ class Room {
   }
   
   void render() {
-    stroke(255,255,255,127);
+    stroke(255,255,255,0);
     fill(255,255,255,127);
     square(0,0,170);
     square(512-170,0,170);
     square(0,512-170,170);
     square(512-170,512-170,170);
     if(!exits[0]) {
-      rect(0,0,512,170); 
+      rect(170,0,172,170); 
     }
     if(!exits[1]) {
-      rect(512-170,0,170,512);
+      rect(512-170,170,170,172);
     }
     if(!exits[2]) {
-      rect(0,512-170,512,170);
+      rect(170,512-170,172,170);
     }
     if(!exits[3]) {
-      rect(0,0,170,512);
+      rect(0,170,170,172);
     }
     if(enemies != null) {
        for(int i = 0; i < enemies.length; ++i) {
