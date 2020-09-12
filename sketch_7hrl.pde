@@ -52,5 +52,9 @@ void draw() {
    room.update();
    bbrian.render();
    bbrian.update();
-   bbrian=stairs.doStairs(bbrian);    
+   if(stairs.doStairs(bbrian)){
+     bbrian = new Player();
+     grid = new Room[5][5];
+     room = grid[0][0];
+   }
 }
