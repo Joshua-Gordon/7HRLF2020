@@ -42,5 +42,5 @@ void draw() {
    room.render();
    bbrian.render();
    bbrian.update();
-   bbrian=stairs.doStairs(bbrian);
+   bbrian=stairs.doStairs(bbrian);    
 }
