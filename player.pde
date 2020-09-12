@@ -36,6 +36,13 @@ class Player {
     }
   }
   
+  Projectile shoot() {
+    float mag = sqrt((this.x - mouseX) * (this.x - mouseX) + (this.y - mouseY) * (this.y - mouseY));
+    float vx = 10 * (mouseX - this.x) / mag + this.dx;
+    float vy = 10 * (mouseY - this.y) / mag + this.dy;
+    return new Projectile(this.x - size, this.y - size, int(vx), int(vy), this.gx, this.gy);
+  }
+  
   void update() {
     if(room.OOB(x+dx,y+dy))
       return;
