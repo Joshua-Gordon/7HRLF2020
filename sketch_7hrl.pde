@@ -39,6 +39,18 @@ void keyReleased() {
     bbrian.dx += 5;
   } else if (key == ' ') {
     projectiles.add(bbrian.shoot());
+  } else if(key == 'm') {
+    grid = new Room[5][5];
+    for (int x = 0; x < 5; ++x) {
+      for (int y = 0; y < 5; ++y) {
+        grid[x][y] = null;
+      }
+    }
+    nextRoom(0, 0, 3);
+    room = grid[0][0];  
+    placeStairs(stairs);
+    bbrian.x = 256;
+    bbrian.y = 256;
   }
 }
 
