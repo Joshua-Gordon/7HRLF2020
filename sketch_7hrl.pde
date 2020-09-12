@@ -27,6 +27,8 @@ void keyPressed() {
     bbrian.direction = 3;
     bbrian.dx = constrain(bbrian.dx-5, -5, 5);
   } else if (key == 'm') {
+    if (dead) score = 0;
+    dead = false;
     for (int x = 0; x < 5; ++x) {
       for (int y = 0; y < 5; ++y) {
         grid[x][y] = null;
@@ -152,11 +154,21 @@ void draw() {
     fill(196, 0, 0);
     textSize(40);
     textAlign(CENTER);
-    text("u died, monke sad", width/2, height/2);
-    text("only found " + score + " monke", width/2, height/2 + 60);
+    if (score < 5) {
+      text("u died, monke sad", width/2, height/2);
+      text("only found " + score + " monke", width/2, height/2 + 60);
+    } else if (score < 15) {
+      text("u died, monke pleased", width/2, height/2);
+      text("found " + score + " monke", width/2, height/2 + 60);
+    } else if (score >= 15) {
+      text("true bananarchist", width/2, height/2);
+      text("found " + score + " monke", width/2, height/2 + 60);
+    }
+    textSize(20);
+    text("press m for monke", width/2, height/2 + 90);
   } else {
     textSize(16);
     textAlign(LEFT);
-    text("Returned to monkey " + score + " time" + (score==1?"":"s"), 256, 256);
+    text("returned to monkey " + score + " time" + (score==1?"":"s"), 256, 256);
   }
 }
