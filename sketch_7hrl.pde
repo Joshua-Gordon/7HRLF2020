@@ -69,9 +69,6 @@ void setup() {
   
   startup = loadImage("angrymonke.png");
   
-  
-  
-  
   for (int x = 0; x < 5; ++x) {
     for (int y = 0; y < 5; ++y) {
       grid[x][y] = null;
@@ -94,9 +91,12 @@ void setup() {
 void draw() {
   clear();
   if(start > 0) {
-    tint(255,255*start/5000);
+     tint(255,255*start/5000);
      image(startup,0,0);
-     start-=100;
+     start-=50;
+     if(start <= 0) {
+       tint(255,255);
+     }
      return;
   }
   room.render();
