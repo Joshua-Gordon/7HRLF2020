@@ -69,7 +69,8 @@ void draw() {
        }
       }
      nextRoom(0,0,3);
-     room = grid[0][0];
+     room = grid[0][0];  
+     placeStairs(stairs);
      score++;
    }
    if(stairs.gx == bbrian.gx && stairs.gy == bbrian.gy) {
