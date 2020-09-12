@@ -12,14 +12,26 @@ void nextRoom(int gx, int gy,int d) {
     r.exits[0] = true;
   if(d == 3)
     r.exits[1] = true;
-  if(gy == 0)
+  if(gy == 0) {
     r.exits[0] = false;
-  if(gy == 4)
+  } else if (grid[gx][gy-1] != null && grid[gx][gy-1].exits[2]) {
+     r.exits[0] = true; 
+  }
+  if(gy == 4) {
     r.exits[2] = false;
-  if(gx == 0)
+  } else if(grid[gx][gy+1] != null && grid[gx][gy+1].exits[0]) {
+    r.exits[2] = true; 
+  }
+  if(gx == 0) {
     r.exits[3] = false;
-  if(gx == 4)
+  } else if (grid[gx-1][gy] != null && grid[gx-1][gy].exits[1]) {
+    r.exits[3] = true; 
+  }
+  if(gx == 4) {
     r.exits[1] = false;
+  } else if (grid[gx+1][gy] != null && grid[gx+1][gy].exits[3]) {
+    r.exits[1] = true; 
+  }
   grid[gx][gy] = r;
   room = r;
 }
