@@ -3,7 +3,11 @@ Room room;
 Room[][] grid = new Room[5][5];
 Stairs stairs = new Stairs();
 
+int score = 0;
+
 PImage computer, monke; 
+
+boolean dead = false;
 
 void keyPressed() {
    if(key == 'w') {
@@ -53,7 +57,8 @@ void draw() {
    room.render();
    room.update();
    bbrian.render();
-   bbrian.update();
+   if(!dead)
+     bbrian.update();
    if(stairs.doStairs(bbrian)){
      bbrian.gx = 0;
      bbrian.gy = 0;
@@ -65,8 +70,15 @@ void draw() {
       }
      nextRoom(0,0,3);
      room = grid[0][0];
+     score++;
    }
    if(stairs.gx == bbrian.gx && stairs.gy == bbrian.gy) {
       stairs.render(); 
+   }
+   color(0,0,0);
+   text("Returned to monkey " + score + " time" + (score==1?"":"s"),256,256);
+   color(255,255,255);
+   if(dead) {
+      println("YOU ARE DEAD!"); 
    }
 }
